@@ -8,6 +8,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import ChatPage from './pages/ChatPage';
 import AttendancePage from './pages/AttendancePage';
 import PerformancePage from './pages/PerformancePage';
+import FinanceDashboard from './pages/FinanceDashboard';
 import Layout from './components/Layout';
 
 function App() {
@@ -71,6 +72,7 @@ function App() {
         <Route path="/chat" element={<Layout profile={profile}><ChatPage profile={profile} /></Layout>} />
         <Route path="/attendance" element={<Layout profile={profile}><AttendancePage profile={profile} /></Layout>} />
         <Route path="/performance/:studentId" element={<Layout profile={profile}><PerformancePage profile={profile} /></Layout>} />
+        <Route path="/finance" element={<Layout profile={profile}><FinanceDashboard profile={profile} /></Layout>} />
       </Routes>
     </BrowserRouter>
   );

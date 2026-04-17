@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom';
-import { MessageCircle, ClipboardCheck, BarChart3, Home, Menu, X } from 'lucide-react';
+import { MessageCircle, ClipboardCheck, BarChart3, Home, Menu, X, DollarSign } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Layout({ profile, children }: { profile: any; children: React.ReactNode }) {
@@ -10,6 +10,7 @@ export default function Layout({ profile, children }: { profile: any; children: 
     { to: '/chat', label: 'Chat', icon: MessageCircle },
     { to: '/attendance', label: 'Attendance', icon: ClipboardCheck },
     { to: profile?.role === 'parent' ? '/performance/' + (profile?.children?.[0] || '') : '/attendance', label: 'Progress', icon: BarChart3 },
+    { to: '/finance', label: 'Finance', icon: DollarSign },
   ];
 
   return (
