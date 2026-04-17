@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
-import { Calendar, CheckCircle, XCircle, Clock, TrendingUp } from 'lucide-react';
+import { Calendar, CheckCircle, XCircle, Clock } from 'lucide-react';
 
 interface AttendanceRecord {
   id: string;

@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { supabase } from '../lib/supabase';
-import { ArrowLeft, Send, Paperclip, MoreVertical, Search, Check, CheckCheck } from 'lucide-react';
-import { NavLink } from 'react-router-dom';
+import { ArrowLeft, Send, Paperclip, MoreVertical, Search, CheckCheck } from 'lucide-react';
+
 
 interface Conversation {
   id: string;
@@ -64,7 +64,7 @@ export default function ChatPage({ profile }: { profile: any }) {
 
     const convos: Conversation[] = [];
     for (const p of parts) {
-      const conv = p.conversations;
+      const conv = Array.isArray(p.conversations) ? p.conversations[0] : p.conversations;
       if (!conv || !conv.is_active) continue;
 
       // Get last message
@@ -92,7 +92,8 @@ export default function ChatPage({ profile }: { profile: any }) {
 
       let title = conv.title || '';
       if (conv.type === 'direct' && otherParts && otherParts.length > 0) {
-        title = otherParts[0].profiles?.full_name || 'Unknown';
+        const prof = (otherParts[0] as any).profiles;
+        title = (Array.isArray(prof) ? prof[0]?.full_name : prof?.full_name) || 'Unknown';
       }
 
       convos.push({

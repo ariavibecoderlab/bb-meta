@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
-import { BarChart3, BookOpen, Star, Image, FileText, ChevronRight } from 'lucide-react';
+import { BarChart3, BookOpen, Image, FileText } from 'lucide-react';
 
 interface SubjectProgress {
   id: string;
@@ -145,8 +145,6 @@ export default function PerformancePage({ profile }: { profile: any }) {
   const overallProgress = subjects.length > 0
     ? Math.round(subjects.reduce((sum, s) => sum + (s.score / s.maxScore * 100), 0) / subjects.length)
     : 0;
-
-  const effectiveStudentId = studentId || children[0]?.id;
 
   return (
     <div className="space-y-6">

@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { MessageCircle, ClipboardCheck, BarChart3, Home, Menu, X, DollarSign } from 'lucide-react';
 import { useState } from 'react';
 

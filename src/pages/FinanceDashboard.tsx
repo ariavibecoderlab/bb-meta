@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
-import { DollarSign, TrendingUp, TrendingDown, AlertTriangle, CreditCard, Building2, FileText, Bell, ArrowUpRight, ArrowDownRight, Clock, CheckCircle } from 'lucide-react';
+import { DollarSign, TrendingUp, AlertTriangle, CreditCard, Building2, FileText, Bell, ArrowUpRight, ArrowDownRight, CheckCircle } from 'lucide-react';
 
 interface Company {
   id: string;
@@ -49,6 +49,7 @@ interface Invoice {
   due_date: string;
   status: string;
   reminder_count: number;
+  company_id?: string;
 }
 
 interface Payable {
@@ -61,7 +62,7 @@ interface Payable {
   description: string;
 }
 
-export default function FinanceDashboard({ profile }: { profile: any }) {
+export default function FinanceDashboard({ profile: _profile }: { profile: any }) {
   const [companies, setCompanies] = useState<Company[]>([]);
   const [selectedCompany, setSelectedCompany] = useState<string>('all');
   const [cashFlows, setCashFlows] = useState<CashFlow[]>([]);
@@ -281,7 +282,7 @@ export default function FinanceDashboard({ profile }: { profile: any }) {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="font-medium text-sm">{inv.customer_name}</p>
-                  <p className="text-xs text-gray-400">{inv.invoice_number} • {getCompanyName(inv.company_id)}</p>
+                  <p className="text-xs text-gray-400">{inv.invoice_number} • {getCompanyName(inv.company_id || '')}</p>
                 </div>
                 <div className="text-right">
                   <p className="font-bold">{formatRM(inv.total_amount)}</p>

@@ -1,4 +1,4 @@
-export default function AdminDashboard({ profile }: { profile: any }) {
+export default function AdminDashboard({ profile: _profile }: { profile: any }) {
   return (
     <div className="space-y-6">
       <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl p-6 text-white">
